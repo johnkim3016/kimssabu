@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>주식차트 김싸부 | 무료 알림 신청</title>
+<meta name="description" content="삼전닉스 아침 점검 + 조정 끝난 종목 알림 무료 신청. 질문 6개, 1분이면 충분해요.">
+<meta property="og:title" content="주식차트 김싸부 | 무료 알림 신청">
+<meta property="og:description" content="삼전닉스 아침 점검 + 조정 끝난 종목 알림 무료 신청">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<base target="_top">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#0b0b0c;color:#f4f1ea;font-family:'Noto Sans KR',sans-serif}
+body{display:flex;justify-content:center}
+.wrap{width:100%;max-width:520px;min-height:100%;padding:28px 22px 40px;display:flex;flex-direction:column}
+.top{height:4px;background:#222;border-radius:4px;overflow:hidden;margin-bottom:26px;visibility:hidden}
+.top i{display:block;height:100%;width:0;background:linear-gradient(90deg,#b8902b,#f1d27a);transition:width .35s}
+.screen{display:none;flex:1;flex-direction:column;animation:in .35s ease}
+.screen.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.brand{display:inline-block;align-self:flex-start;border:1px solid #d4af37;color:#d4af37;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;margin-bottom:22px;letter-spacing:.5px}
+h1{font-size:30px;line-height:1.35;font-weight:900;margin-bottom:16px;word-break:keep-all}
+h1 em{font-style:normal;color:#e8c55a}
+.sub{font-size:16px;line-height:1.65;color:#bdb6a6;margin-bottom:26px;word-break:keep-all}
+.perks{list-style:none;margin-bottom:28px}
+.perks li{background:#151515;border:1px solid #2a2a2a;border-radius:14px;padding:14px 16px;margin-bottom:10px;font-size:15.5px;line-height:1.5;word-break:keep-all}
+.perks b{color:#e8c55a}
+.meta{font-size:13.5px;color:#8d877a;margin-top:12px;text-align:center}
+.num{font-size:14px;color:#d4af37;font-weight:700;margin-bottom:10px}
+h2{font-size:24px;line-height:1.4;font-weight:800;margin-bottom:8px;word-break:keep-all}
+.hint{font-size:14.5px;color:#9b9486;margin-bottom:22px;line-height:1.55;word-break:keep-all}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#151515;border:1.5px solid #2c2c2c;color:#f4f1ea;border-radius:14px;padding:16px;margin-bottom:12px;font-size:16.5px;font-family:inherit;line-height:1.45;cursor:pointer;transition:.15s;word-break:keep-all}
+.opt .k{flex:none;width:28px;height:28px;border-radius:8px;border:1.5px solid #555;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#999}
+.opt small{display:block;color:#8f8879;font-size:13.5px;margin-top:3px}
+.opt.sel{border-color:#d4af37;background:#1d1a10}
+.opt.sel .k{background:#d4af37;border-color:#d4af37;color:#111}
+input[type=text],input[type=tel]{width:100%;background:transparent;border:none;border-bottom:2px solid #444;color:#fff;font-size:24px;font-family:inherit;padding:10px 2px;outline:none;transition:.2s}
+input:focus{border-color:#d4af37}
+input::placeholder{color:#555}
+.err{color:#ff7a6b;font-size:14px;min-height:22px;margin-top:10px}
+.btns{margin-top:auto;padding-top:26px;display:flex;gap:10px}
+.btn{flex:1;background:linear-gradient(180deg,#f0cf6b,#c99b2e);color:#111;border:none;border-radius:14px;padding:17px;font-size:18px;font-weight:800;font-family:inherit;cursor:pointer}
+.btn:disabled{opacity:.35}
+.back{flex:none;background:#1a1a1a;color:#aaa;border:1px solid #333;border-radius:14px;padding:17px 18px;font-size:15px;font-family:inherit;cursor:pointer}
+.skip{background:none;border:none;color:#8d877a;font-size:14.5px;margin-top:14px;cursor:pointer;font-family:inherit;text-decoration:underline}
+.policy{background:#141414;border:1px solid #2a2a2a;border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.7;color:#b3ac9c;max-height:42vh;overflow:auto;white-space:pre-line}
+.done{align-items:center;text-align:center;justify-content:center}
+.check{width:76px;height:76px;border-radius:50%;background:#1d1a10;border:2px solid #d4af37;display:flex;align-items:center;justify-content:center;font-size:38px;color:#e8c55a;margin:0 auto 22px}
+.foot{font-size:12px;color:#5f5a50;text-align:center;margin-top:22px;line-height:1.6}
+.hp{position:absolute;left:-9999px;opacity:0}
+.enter{font-size:12.5px;color:#666;margin-top:10px}
+.agree{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:15.5px;color:#d9d3c4;cursor:pointer}
+.agree input{width:22px;height:22px;accent-color:#d4af37}
+.policy{margin-top:10px}
+</style></head>
+<body><div class="wrap">
+<div class="top" id="bar"><i id="barfill"></i></div>
+
+<section class="screen on" id="s0">
+  <span class="brand">주식차트 김싸부</span>
+  <h1>삼전닉스 아침 점검 +<br><em>조정 끝난 종목 알림</em><br>무료 신청</h1>
+  <p class="sub">30년 세력차트 아빠가 장 시작 전에 보는 숫자와, 조정을 마치고 다시 움직이는 자리를 정리해 보내 드립니다.</p>
+  <div class="btns"><button class="btn" onclick="startForm()">시작하기</button></div>
+  <p class="meta">질문 6개 · 1분이면 충분해요⚡</p>
+</section>
+
+<section class="screen" id="s1">
+  <p class="num">1 → 6</p>
+  <h2>성함이 어떻게 되세요? *</h2>
+  <input type="text" id="name" maxlength="20" placeholder="여기에 입력하세요" autocomplete="name">
+  <input class="hp" type="text" id="hp" tabindex="-1" autocomplete="off">
+  <p class="err" id="e1"></p>
+  <p class="enter">Enter ↵</p>
+  <div class="btns"><button class="back" onclick="go(0)">←</button><button class="btn" onclick="next1()">다음</button></div>
+</section>
+
+<section class="screen" id="s2">
+  <p class="num">2 → 6</p>
+  <h2>함께하실 준비 되셨나요? *</h2>
+  <p class="sub">혼자 주식 때문에 고민하지 마세요.<br>장 시작 전 숫자 3개, 조정 끝난 자리 하나.<br>30년 세력차트 아빠와 같은 기준으로 시장을 보는 겁니다.<br><br>매일 아침, 같은 기준으로 함께 확인해요.</p>
+  <button class="opt" onclick="next2(this)"><span class="k">✓</span><span>네, 함께할게요</span></button>
+  <div class="btns"><button class="back" onclick="go(1)">←</button></div>
+</section>
+
+<section class="screen" id="s3">
+  <p class="num">3 → 6</p>
+  <h2>받고 싶은 무료 혜택을 골라 주세요 (중복 가능) *</h2>
+  <button class="opt" data-v="삼전닉스 아침 숫자" onclick="pick(this)"><span class="k">A</span><span>📊 삼전닉스 아침 숫자 3개</span></button>
+  <button class="opt" data-v="조정 끝난 재급등 종목" onclick="pick(this)"><span class="k">B</span><span>🚀 조정 끝난 재급등 종목 알림</span></button>
+  <button class="opt" data-v="무료 정보방 입장" onclick="pick(this)"><span class="k">C</span><span>💬 주식하는 아빠 무료 정보방 입장</span></button>
+  <p class="err" id="e3"></p>
+  <div class="btns"><button class="back" onclick="go(2)">←</button><button class="btn" id="n3" onclick="next3()" disabled>다음</button></div>
+</section>
+
+<section class="screen" id="s4">
+  <p class="num">4 → 6</p>
+  <h2>전화번호 (정확한 기재 부탁드립니다) *</h2>
+  <input type="tel" id="phone" maxlength="13" placeholder="010-0000-0000" inputmode="numeric" autocomplete="tel">
+  <p class="err" id="e4"></p>
+  <p class="enter">Enter ↵</p>
+  <div class="btns"><button class="back" onclick="go(3)">←</button><button class="btn" onclick="next4()">다음</button></div>
+</section>
+
+<section class="screen" id="s5">
+  <p class="num">5 → 6</p>
+  <h2>보유 중인 종목이나 관심 종목을 남겨 주세요</h2>
+  <p class="hint">예) 삼성전자 or XX 관련주 등 (짧게)</p>
+  <input type="text" id="stock" maxlength="40" placeholder="여기에 입력하세요">
+  <p class="enter">Enter ↵</p>
+  <div class="btns"><button class="back" onclick="go(4)">←</button><button class="btn" onclick="next5()">다음</button></div>
+  <button class="skip" onclick="next5(true)">건너뛰기</button>
+</section>
+
+<section class="screen" id="s6">
+  <p class="num">6 → 6</p>
+  <h2>개인정보 수집·이용에 동의해 주세요 *</h2>
+  <div class="policy">1. 수집 항목: 성함, 휴대폰 번호, 보유·관심 종목
+2. 수집 목적: 신청하신 무료 알림 발송, 정보방 초대 및 안내
+3. 보유 기간: 수집일로부터 6개월 보관 후 파기. 삭제를 요청하시면 바로 지웁니다.
+4. 동의를 거부하실 수 있으며, 거부하시면 서비스 제공이 제한됩니다.
+
+[안내 사항]
+· 이 채널의 내용은 투자 공부를 위한 정보 제공이며, 특정 종목의 매수·매도 권유가 아닙니다.
+· 개별 투자 상담은 제공하지 않습니다.
+· 주식 투자는 원금 손실이 생길 수 있으며, 투자 판단과 책임은 본인에게 있습니다.</div>
+  <p class="err" id="e6"></p>
+  <div class="btns"><button class="back" onclick="go(5)">←</button><button class="btn" id="sendBtn" onclick="send()">동의합니다</button></div>
+</section>
+
+<section class="screen done" id="s7">
+  <div class="check">✓</div>
+  <h2>제출 완료!</h2>
+  <p class="sub">소중한 응답 감사합니다.<br>곧 안내 문자를 보내 드릴게요. 모르는 번호라도 꼭 받아 주세요.</p>
+  <div class="btns" style="width:100%"><button class="btn" onclick="toChannel()">채널로 돌아가기</button></div>
+</section>
+
+<p class="foot">주식차트 김싸부 (세력차트 김사부)</p>
+</div>
+<script>
+window.FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwUKY91zIT91-EpiOZmUHrjnCKUDhAA0mlngFLY2CCt-bDvOv-WNolfkmWSQJBKq2g/exec";
+var P = (function(){var q=new URLSearchParams(location.search);return {src:(q.get('src')||'').slice(0,40), v:(q.get('v')||'').slice(0,30), test:q.get('test')==='1'};})();
+var S = {types: [], sid: Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4)};
+var cur = 0, logged = {};
+var isGAS = typeof google !== 'undefined' && google.script && google.script.run;
+var ENDPOINT = window.FORM_ENDPOINT || '';
+function device(){ return /Mobi|Android|iPhone/i.test(navigator.userAgent) ? '모바일' : 'PC'; }
+function call(fn, data, cb){
+  if (isGAS) { google.script.run.withSuccessHandler(cb || function(){}).withFailureHandler(function(){ if (cb) cb({ok:false}); })[fn](data); return; }
+  if (!ENDPOINT) { if (cb) cb({ok:false}); return; }
+  data.kind = fn === 'logEvent' ? 'event' : 'submit';
+  fetch(ENDPOINT, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(data)})
+    .then(function(){ if (cb) cb({ok:true}); }).catch(function(){ if (cb) cb({ok:false}); });
+}
+function ev(step){ if (logged[step] || P.test) return; logged[step] = 1; call('logEvent', {sid:S.sid, step:step, src:P.src, v:P.v}); }
+function go(n){
+  document.getElementById('s' + cur).classList.remove('on');
+  cur = n;
+  document.getElementById('s' + n).classList.add('on');
+  document.getElementById('bar').style.visibility = (n > 0 && n < 7) ? 'visible' : 'hidden';
+  document.getElementById('barfill').style.width = (Math.min(n, 6) / 6 * 100) + '%';
+  var f = { 1: 'name', 4: 'phone', 5: 'stock' }[n];
+  if (f) setTimeout(function(){ document.getElementById(f).focus(); }, 250);
+}
+function startForm(){ ev('start'); go(1); }
+function next1(){
+  var v = document.getElementById('name').value.trim();
+  if (v.length < 2) { document.getElementById('e1').textContent = '성함을 2글자 이상 적어 주세요.'; return; }
+  document.getElementById('e1').textContent = ''; S.name = v; ev('q1'); go(2);
+}
+function next2(b){ b.classList.add('sel'); ev('q2'); setTimeout(function(){ go(3); }, 220); }
+function pick(b){
+  b.classList.toggle('sel');
+  S.types = [].slice.call(document.querySelectorAll('#s3 .opt.sel')).map(function(x){ return x.getAttribute('data-v'); });
+  document.getElementById('n3').disabled = !S.types.length;
+}
+function next3(){ if (!S.types.length) { document.getElementById('e3').textContent = '하나 이상 골라 주세요.'; return; } ev('q3'); go(4); }
+var ph = document.getElementById('phone');
+ph.addEventListener('input', function(){
+  var d = ph.value.replace(/\D/g, '').slice(0, 11);
+  ph.value = d.length < 4 ? d : d.length < 8 ? d.slice(0,3) + '-' + d.slice(3) : d.slice(0,3) + '-' + d.slice(3, d.length - 4) + '-' + d.slice(-4);
+});
+function next4(){
+  var d = ph.value.replace(/\D/g, '');
+  if (!/^01[016789]\d{7,8}$/.test(d)) { document.getElementById('e4').textContent = '휴대폰 번호를 다시 확인해 주세요.'; return; }
+  document.getElementById('e4').textContent = ''; S.phone = d; ev('q4'); go(5);
+}
+function next5(skip){ S.stock = skip ? '' : document.getElementById('stock').value.trim(); ev('q5'); go(6); }
+function send(){
+  var b = document.getElementById('sendBtn'); b.disabled = true; b.textContent = '보내는 중...';
+  var data = {types:S.types, name:S.name, phone:S.phone, stock:S.stock, src:P.src, v:P.v, test:P.test, sid:S.sid, device:device(), hp:document.getElementById('hp').value};
+  call('submitLead', data, function(r){
+    if (r && r.ok) { go(7); }
+    else { b.disabled = false; b.textContent = '동의합니다'; document.getElementById('e6').textContent = (r && r.msg) || '잠시 후 다시 눌러 주세요.'; }
+  });
+}
+function toChannel(){ window.open('https://www.youtube.com/@%EA%B9%80%EC%8B%B8%EB%B6%80-1963', '_top'); }
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Enter') return;
+  if (cur === 1) next1(); else if (cur === 4) next4(); else if (cur === 5) next5();
+});
+ev('view');
+</script>
+</body></html>
